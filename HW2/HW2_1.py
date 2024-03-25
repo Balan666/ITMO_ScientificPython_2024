@@ -16,7 +16,6 @@ def get_ensembl(accessions_list):
     ext = "/lookup/id"
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
     r = requests.post(server + ext, headers=headers, data=f'{json_ids}')
-    print(r.text)
     if not r.ok:
         raise ValueError('Incorrect data entered.')
 
@@ -60,5 +59,5 @@ def parse_ID(ID_list):
         return 'Check the ids\' format'
 
 
-accessions_list = list(input('Enter the accession IDs separated by spaces:').split())
+accessions_list = list(input('Enter the IDs separated by spaces:').split())
 print(parse_ID(accessions_list))
