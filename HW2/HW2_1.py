@@ -48,7 +48,7 @@ def parse_response_ensembl(decoded):
     return output
 
 def parse_ID(ID_list):
-    ensembl_match = all(re.search(r'"(ENS(|\w*)|(MGP\D*))(E|FM|G|GT|P|RF|T)\d{11}"g', 'r' + ID) for ID in ID_list)
+    ensembl_match = all(re.search(r'(ENS([a-zA-Z]{0,4})|(MGP\D*))(E|FM|G|GT|P|RF|T)\d{11}', 'r' + ID) for ID in ID_list)
     uniprot_match = all(re.search(r'[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}', 'r' + ID) for ID in ID_list)
 
     if ensembl_match:
